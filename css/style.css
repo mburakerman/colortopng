@@ -1,0 +1,355 @@
+:root {
+    --black: #222;
+    --darkGrey: #444;
+    --grey: #b1b1b1;
+    --gradientTypeRadioColor: #23CE6B;
+    --linearGradientPositionRadioColor: #ff4444;
+}
+
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: var(--black);
+    font-family: 'Varela Round', sans-serif;
+    overflow: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#solidCanvas, #gradientCanvas {
+    width: 300px;
+    height: 250px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+#preloader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.generator-wrapper {
+    margin: 70px auto;
+    width: 375px;
+}
+@media only screen and (max-width: 768px) {
+    .generator-wrapper {
+        width: 88%;
+    }
+}
+
+.title {
+    text-align: center;
+    margin-top: 5px;
+}
+.title a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 45px;
+    letter-spacing: 1.1px;
+}
+.title #logo {
+    background: url(../img/logo.png) no-repeat;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+    top: 15px;
+    right: 15px;
+    width: 2em;
+    height: 2em;
+}
+
+.description {
+    text-align: center;
+    color: var(--grey);
+    font-size: 15px;
+    margin-top: -10px;
+}
+@media only screen and (max-width: 992px) {
+    .title a {
+       font-size: 32px;
+    }
+    .title #logo {
+        width: 1.7em;
+        height: 1.7em;
+    }
+    .description {
+        font-size: 14px; 
+    }
+}
+
+.generator-body-download-button {
+    display: block;
+    width: 140px;
+    margin: 0px auto;
+    background: #fff;
+    color: var(--black);
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+.generator-body-download-button:hover {
+    background: var(--darkGrey);
+    color: #fff;
+}
+
+
+.tabs {
+    margin: 0 auto; 
+    display: table;
+    text-align: center;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.tabs li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 34px;
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.tabs li:first-child {
+    border-top-left-radius: 5px;
+}
+.tabs li:nth-child(2) {
+    border-top-right-radius: 5px;
+}
+.active {
+    background: #333;
+}
+.tabs li:hover {
+    background: #333;
+}
+
+
+.generator-body {
+    margin: 0 auto;
+    padding: 20px 10px;
+    border: 2px solid var(--darkGrey);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.generator-body--gradient {
+    box-shadow: -10px 10px 0px 0px var(--darkGrey);
+}
+.generator-body--solid {
+    box-shadow: 10px 10px 0px 0px var(--darkGrey);
+}
+.generator-body-inputs {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.generator-body-inputs input {
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: var(--black);
+    font-size: 15px;
+    padding: 0 10px;
+    outline: none;
+}
+
+.generator-body--solid .jscolor {
+    width: 100px;
+    height: 30px;
+    padding: 2px 3px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+    display: block;
+    margin: 20px auto;
+}
+.generator-body--solid label {
+    text-align: left;
+    font-size: 15px;
+    color: var(--grey);
+    display: inline-block;
+    height: auto;
+}
+.generator-body--solid label:first-child {
+    margin-right: 15px;
+}
+
+
+/* ===== GRADIENT ===== */
+.gradient-linear-radial-radios {
+    margin: 0 auto 10px auto;
+    text-align: center;
+    font-size: 17px;
+}
+.gradient-linear-radial-radios input[type="radio"] {
+    display: none;
+}
+.gradient-linear-radial-radios label {
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.gradient-linear-radial-radios label:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    border: 1px solid var(--darkGrey);
+}
+.gradient-linear-radial-radios input[type="radio"]:checked+label {
+    color: white;
+}
+.gradient-linear-radial-radios input[type="radio"]:checked+label:after {
+    background: var(--gradientTypeRadioColor);
+    animation: jelly 0.6s linear;
+}
+
+
+ 
+.gradient-position-radios {
+    text-align: center;
+    margin: 20px auto;
+}
+#linear_gradient_left_label {
+    margin-left: 15px;
+}
+.gradient-position-radios span {
+    display: block;
+    font-size: 15px;
+    color: var(--grey);
+    margin-bottom: 5px;
+}
+.gradient-position-radios input[type="radio"] {
+    display: none;
+}
+.gradient-position-radios label {
+    position: relative;
+    margin-left: 40px;
+}
+.gradient-position-radios label:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    border: 1px solid var(--darkGrey);
+}
+.gradient-position-radios input[type="radio"]:checked+label {
+    color: white;
+}
+.gradient-position-radios input[type="radio"]:checked+label:after {
+    background: var(--linearGradientPositionRadioColor);
+    animation: jelly 0.6s linear;
+}
+
+
+
+ .gradient-end-point-input-container {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+.gradient-end-point-input-container span {
+    color: var(--grey);
+    font-size: 15px;
+}
+
+.gradient-circle-radius-container {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid auto;
+}
+.gradient-circle-radius-container span {
+    color: var(--grey);
+    font-size: 15px;
+}
+
+
+
+/* jscolor gradient wrapper */
+.jscolor_gradient_wrapper {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+.jscolor_gradient_wrapper .jscolor:first-child {
+    margin-right: 15px;
+}
+.generator-body--gradient .jscolor {
+    width: 100px;
+    height: 30px;
+    padding: 2px 3px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+}
+.generator-body--gradient label {
+    text-align: left;
+    font-size: 15px;
+    color: var(--grey);
+    display: inline-block;
+    height: auto;
+}
+.generator-body--gradient label:first-child {
+    margin-right: 15px;
+}
+
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 50px;
+    color: #767676;
+    margin-bottom: 20px;
+}
+footer a {
+    margin: 0 auto;
+    color: var(--grey);
+    text-decoration: none;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
